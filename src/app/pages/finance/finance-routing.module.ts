@@ -7,11 +7,11 @@ import { CashCashEquivalentComponent } from './cash-cash-equivalent/cash-cash-eq
 
 const routes: Routes = [
   {
-    path: "Assets",
+    path: "assets",
     component: AssetsComponent
   },
   {
-    path: "Cash & Cash Equivalent",
+    path: "cash-equivalent",
     component: CashCashEquivalentComponent
   },
 ];

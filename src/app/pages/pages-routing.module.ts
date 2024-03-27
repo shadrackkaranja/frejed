@@ -8,9 +8,9 @@ const routes: Routes = [
   {
     path: 'finance', loadChildren: () => import('./finance/finance.module').then(m => m.FinanceModule)
   },
-  // {
-  //   path: 'ecommerce', loadChildren: () => import('./ecommerce/ecommerce.module').then(m => m.EcommerceModule)
-  // },
+  {
+    path: 'ecommerce', loadChildren: () => import('./ecommerce/ecommerce.module').then(m => m.EcommerceModule)
+  },
 ];
 
 @NgModule({

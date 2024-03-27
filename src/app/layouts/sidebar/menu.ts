@@ -26,7 +26,7 @@ export const MENU: MenuItem[] = [
             {
                 id: 5,
                 label: 'Cash & Cash Equivalent',
-                link: '/ecommerce/products',
+                link: '/finance/cash-equivalent',
                 parentId: 3
             },
             {
