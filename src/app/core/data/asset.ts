@@ -1,0 +1,40 @@
+const assetList = [
+    {
+        id: 1,
+        assetName: "Asset 1",
+        assetType: "Property",
+        purchaseDate: "12/02/2024",
+        purchaseCost: "200000",
+        depreciationMethod: "Straight Line",
+        depreciationExpense: "67890",
+        currentValue: "150000",
+        location: "Nairobi",
+        maintenanceRecord: "Maintenance record 1",
+    },
+    {
+        id: 2,
+        assetName: "Asset 2",
+        assetType: "Investment",
+        purchaseDate: "24/02/2024",
+        purchaseCost: "500000",
+        depreciationMethod: "Declining Balance",
+        depreciationExpense: "367890",
+        currentValue: "4150000",
+        location: "Nakuru",
+        maintenanceRecord: "Maintenance record 2",
+    },
+    {
+        id: 3,
+        assetName: "Asset 3",
+        assetType: "Property",
+        purchaseDate: "22/03/2024",
+        purchaseCost: "87000",
+        depreciationMethod: "Straight Line",
+        depreciationExpense: "17890",
+        currentValue: "750000",
+        location: "Nairobi",
+        maintenanceRecord: "Maintenance record 3",
+    },
+]
+
+export { assetList }
