@@ -32,7 +32,7 @@ export const MENU: MenuItem[] = [
             {
                 id: 6,
                 label: 'Employment Cost',
-                link: '/finance/employmentcost',
+                link: '/finance/employment-cost',
                 parentId: 3
             },
             {
@@ -50,13 +50,13 @@ export const MENU: MenuItem[] = [
             {
                 id: 8,
                 label: 'Financial Reports',
-                link: '/finance/financialreports',
+                link: '/finance/financial-reports',
                 parentId: 3
             },
             {
                 id: 9,
                 label: 'Management Accounts',
-                link: '/finance/managementaccounts',
+                link: '/finance/management-accounts',
                 parentId: 3
             },
             {

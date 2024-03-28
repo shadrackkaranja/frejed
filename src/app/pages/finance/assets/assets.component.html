@@ -93,14 +93,14 @@
                   <td class="assetname">{{ data.assetName }}</td>
                   <td class="assettype">{{ data.assetType }}</td>
                   <td class="purchasedate">{{ data.purchaseDate }}</td>
-                  <td class="purchasecost">{{ data.purchaseCost }}</td>
+                  <td class="purchasecost">ksh{{ data.purchaseCost }}</td>
                   <td class="depreciationmethod">
                     {{ data.depreciationMethod }}
                   </td>
                   <td class="depreciationexpense">
-                    {{ data.depreciationExpense }}
+                    ksh{{ data.depreciationExpense }}
                   </td>
-                  <td class="currentvalue">${{ data.currentValue }}</td>
+                  <td class="currentvalue">ksh{{ data.currentValue }}</td>
                   <td class="location">{{ data.location }}</td>
                   <td class="maintenance">{{ data.maintenanceRecords }}</td>
                   <td>
@@ -119,7 +119,7 @@
                         <li>
                           <a
                             class="dropdown-item"
-                            routerLink="/ecommerce/product-details"
+                            routerLink="/"
                             href="javascript:void(0);"
                             ><i class="ph-eye align-middle me-1"></i> View</a
                           >

@@ -11,6 +11,7 @@ import { TicketReducer, TicketState } from "./Tickets/ticket.reducer";
 import { ChatReducer, ChatState } from "./chat/chat.reducer";
 import { ProductReducer, ProductState } from "./Product/product.reducer";
 import { AssetReducer, AssetState } from "./Asset/asset.reducer";
+import { CashEquivalentReducer, CashEquivalentState } from "./Cash-equivalent/cash-equivalent.reducer";
 import { InvoiceReducer, InvoiceState } from "./Invoices/invoices.reducer";
 import { AuthenticationState, authenticationReducer } from "./Authentication/authentication.reducer";
 import { LayoutState, layoutReducer } from "./layouts/layout-reducers";
@@ -27,6 +28,7 @@ export interface RootReducerState {
     auth: AuthenticationState;
     statlist: AnalyticsState;
     CRMlist: CRMState;
+    cashequivalent: CashEquivalentState;
     Ecommercelist: ECoState;
     Learninglist: LearningState;
     Realist: RealState;
@@ -51,6 +53,7 @@ export const rootReducer: ActionReducerMap<RootReducerState> = {
     layout: layoutReducer,
     statlist: AnalyticsReducer,
     CRMlist: CRMReducer,
+    cashequivalent: CashEquivalentReducer,
     auth: authenticationReducer,
     Ecommercelist: ECoReducer,
     Learninglist: LearningReducer,

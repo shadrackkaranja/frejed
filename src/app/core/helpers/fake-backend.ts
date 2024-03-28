@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-import { ChannelsData, TableData, agencies, agentlistdata, attachementsData, bookmarkData, browserData, callsData, chatContactData, chatData, cources, courseGrid, courseList, customerList, dealData, earningcard, earningdata, estateList, feedback, instructor, invoice, invoicesList, leadData, listingGrid, listinglist, listinglistcard, messages, orderList, orders, productList, products, assetList, property, recentcourse, rentproperty, saleproperty, sales, sellerList, sellerOverview, subscription, supporttickets, taskData, ticketList, topPageData } from '../data';
+import { ChannelsData, TableData, agencies, agentlistdata, attachementsData, bookmarkData, browserData, callsData, chatContactData, chatData, cources, courseGrid, courseList, customerList, dealData, earningcard, earningdata, estateList, feedback, instructor, invoice, invoicesList, leadData, listingGrid, listinglist, listinglistcard, messages, orderList, orders, productList, products, assetList, cashEquivalentList, property, recentcourse, rentproperty, saleproperty, sales, sellerList, sellerOverview, subscription, supporttickets, taskData, ticketList, topPageData } from '../data';
 import { category, instructorGrid, instructorList } from '../data/learning';
 
 
@@ -597,7 +597,7 @@ export class fakebackendInterceptor implements HttpInterceptor {
                     return throwError({ status: 401, error: { message: 'No Data Found' } });
                 }
             }
-            // Add product list
+            // Add asset list
             if (request.url.endsWith('/app/assetList') && request.method === 'POST') {
                 const newUser = request.body;
                 if (assetList) {
@@ -607,7 +607,7 @@ export class fakebackendInterceptor implements HttpInterceptor {
                 }
             }
 
-            // Update product list
+            // Update asset list
             if (request.url.endsWith('/app/assetList') && request.method === 'PUT') {
                 const updatedUser = request.body;
                 if (assetList) {
@@ -617,10 +617,48 @@ export class fakebackendInterceptor implements HttpInterceptor {
                 }
             }
 
-            // DELETE product list
+            // DELETE asset list
             if (request.url.endsWith('/app/assetList') && request.method === 'DELETE') {
                 const updatedUser = request.body;
                 if (assetList) {
+                    return of(new HttpResponse({ status: 200, body: updatedUser })); // respond 200 OK
+                } else {
+                    return throwError({ status: 401, error: { message: 'Unauthorised' } });
+                }
+            }
+
+             // get cash list
+             if (request.url.endsWith('/app/cashEquivalentList') && request.method === 'GET') {
+                if (cashEquivalentList) {
+                    return of(new HttpResponse({ status: 200, body: cashEquivalentList }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+            // Add cash list
+            if (request.url.endsWith('/app/cashEquivalentList') && request.method === 'POST') {
+                const newUser = request.body;
+                if (cashEquivalentList) {
+                    return of(new HttpResponse({ status: 200, body: newUser }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+
+            // Update cash list
+            if (request.url.endsWith('/app/cashEquivalentList') && request.method === 'PUT') {
+                const updatedUser = request.body;
+                if (cashEquivalentList) {
+                    return of(new HttpResponse({ status: 200, body: updatedUser }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+
+            // DELETE cash list
+            if (request.url.endsWith('/app/cashEquivalentList') && request.method === 'DELETE') {
+                const updatedUser = request.body;
+                if (cashEquivalentList) {
                     return of(new HttpResponse({ status: 200, body: updatedUser })); // respond 200 OK
                 } else {
                     return throwError({ status: 401, error: { message: 'Unauthorised' } });

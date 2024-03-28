@@ -1,5 +1,5 @@
 export interface assetModel {
-    id?:any;
+    id?: any;
     img?: any;
     assetName?: any;
     assetType?: any;

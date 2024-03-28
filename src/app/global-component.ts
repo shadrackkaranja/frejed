@@ -22,4 +22,8 @@ export const GlobalComponent = {
 
     // assets Api
     asset: 'apps/asset',
+
+    // cash equivalent Api
+
+    cashEquivalent: 'apps/cashequivalent',
 }

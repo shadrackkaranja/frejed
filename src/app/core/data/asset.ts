@@ -9,7 +9,7 @@ const assetList = [
         depreciationExpense: "67890",
         currentValue: "150000",
         location: "Nairobi",
-        maintenanceRecord: "Maintenance record 1",
+        maintenanceRecords: "Maintenance record 1",
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const assetList = [
         depreciationExpense: "367890",
         currentValue: "4150000",
         location: "Nakuru",
-        maintenanceRecord: "Maintenance record 2",
+        maintenanceRecords: "Maintenance record 2",
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ const assetList = [
         depreciationExpense: "17890",
         currentValue: "750000",
         location: "Nairobi",
-        maintenanceRecord: "Maintenance record 3",
+        maintenanceRecords: "Maintenance record 3",
     },
 ]
 
