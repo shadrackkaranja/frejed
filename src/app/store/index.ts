@@ -14,6 +14,7 @@ import { AssetReducer, AssetState } from "./Asset/asset.reducer";
 import { CashEquivalentReducer, CashEquivalentState } from "./Cash-equivalent/cash-equivalent.reducer";
 import { EmploymentCostReducer, EmploymentCostState } from "./employment-cost/employment-cost.reducer";
 import { EquityReducer, EquityState } from "./Equity/equity.reducer";
+import { ExpensesReducer, ExpensesState } from "./Expenses/expenses.reducer";
 import { InvoiceReducer, InvoiceState } from "./Invoices/invoices.reducer";
 import { AuthenticationState, authenticationReducer } from "./Authentication/authentication.reducer";
 import { LayoutState, layoutReducer } from "./layouts/layout-reducers";
@@ -33,6 +34,7 @@ export interface RootReducerState {
     cashequivalent: CashEquivalentState;
     employmentcost: EmploymentCostState;
     equity: EquityState;
+    expenses: ExpensesState;
     Ecommercelist: ECoState;
     Learninglist: LearningState;
     Realist: RealState;
@@ -60,6 +62,7 @@ export const rootReducer: ActionReducerMap<RootReducerState> = {
     cashequivalent: CashEquivalentReducer,
     employmentcost: EmploymentCostReducer,
     equity: EquityReducer,
+    expenses: ExpensesReducer,
     auth: authenticationReducer,
     Ecommercelist: ECoReducer,
     Learninglist: LearningReducer,

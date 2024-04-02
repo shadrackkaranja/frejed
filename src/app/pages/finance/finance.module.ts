@@ -54,6 +54,7 @@ import { AssetsComponent } from './assets/assets.component';
 import { CashCashEquivalentComponent } from './cash-cash-equivalent/cash-cash-equivalent.component';
 import { EmploymentCostComponent } from './employment-cost/employment-cost.component';
 import { EquityComponent } from './equity/equity.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -68,7 +69,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     AssetsComponent,
     CashCashEquivalentComponent,
     EmploymentCostComponent,
-    EquityComponent
+    EquityComponent,
+    ExpensesComponent
   ],
   imports: [
     CommonModule,

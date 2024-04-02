@@ -14,7 +14,7 @@ import { addequityList, deleteequityList, fetchequityList, updateequityList } fr
   selector: 'app-equity',
   templateUrl: './equity.component.html',
   styleUrl: './equity.component.scss',
-  providers: [DecimalPipe],
+  providers: [DecimalPipe]
 })
 export class EquityComponent {
 

@@ -30,8 +30,8 @@
                 class="btn btn-primary add-btn"
                 (click)="showModal.show()"
               >
-                <i class="bi bi-plus-circle align-baseline me-1"></i> Add
-                Equity Info
+                <i class="bi bi-plus-circle align-baseline me-1"></i> Add Equity
+                Info
               </button>
             </div>
           </div>
@@ -47,7 +47,10 @@
                   >
                     Issued Shares
                   </th>
-                  <th class="sort cursor-pointer" (click)="onSort('retainedEarnings')">
+                  <th
+                    class="sort cursor-pointer"
+                    (click)="onSort('retainedEarnings')"
+                  >
                     Retained Earnings
                   </th>
                   <th class="sort cursor-pointer" (click)="onSort('dividends')">
@@ -57,7 +60,7 @@
                     class="sort cursor-pointer"
                     (click)="onSort('stockTransactions')"
                   >
-                    Stock Transactions 
+                    Stock Transactions
                   </th>
                   <th>Action</th>
                 </tr>
@@ -66,10 +69,10 @@
                 @for ( data of equity; track $index) {
                 <tr id="p_{{ data._id }}">
                   <td class="issuedShares">{{ data.issuedShares }}%</td>
-                  <td class="retainedEarnings">ksh {{ data.retainedEarnings }}</td>
-                  <td class="dividends">
-                    ksh {{ data.dividends }}
+                  <td class="retainedEarnings">
+                    ksh {{ data.retainedEarnings }}
                   </td>
+                  <td class="dividends">ksh {{ data.dividends }}</td>
                   <td class="stockTransactions">
                     {{ data.stockTransactions }}
                   </td>
@@ -206,99 +209,63 @@
           <input type="hidden" id="discount-field" />
 
           <div class="mb-3">
-            <label for="employee-name-input" class="form-label"
-              >Employee Name</label
+            <label for="issued-shares-input" class="form-label"
+              >Issued Shares</label
             >
             <div class="input-group mb-3">
               <input
-                type="text"
-                id="employee-name-input"
-                formControlName="employeeName"
+                type="number"
+                id="issued-shares-input"
+                formControlName="issuedShares"
                 class="form-control"
-                placeholder="Enter Employee Name"
+                placeholder="Enter Issued Shares"
                 required
               />
             </div>
           </div>
 
           <div class="mb-3">
-            <label for="salary-input" class="form-label">Salary</label>
+            <label for="retained-earnings-input" class="form-label"
+              >Retained Earnings</label
+            >
             <div class="input-group mb-3">
               <span class="input-group-text">ksh</span>
               <input
                 type="number"
-                id="salary-input"
-                formControlName="salary"
+                id="retained-earnings-input"
+                formControlName="retainedEarnings"
                 class="form-control"
-                placeholder="Enter salary/wage"
+                placeholder="Enter Retained Earnings"
                 required
               />
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="benefits-input" class="form-label">Benefits</label>
-            <textarea
-              class="form-control"
-              name="benefits"
-              id="benefits-input"
-              rows="3"
-            ></textarea>
           </div>
 
           <div class="mb-3">
-            <label for="payroll-taxes-input" class="form-label"
-              >Payroll Taxes</label
+            <label for="dividends-input" class="form-label"
+              >Dividends</label
             >
+            <div class="input-group mb-3">
+              <span class="input-group-text">ksh</span>
+              <input
+                type="number"
+                id="dividends-input"
+                formControlName="Dividends"
+                class="form-control"
+                placeholder="Enter Dividends"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="stock-transactions-input" class="form-label">Stock Transactions</label>
             <textarea
               class="form-control"
-              name="payrollTaxes"
-              id="payroll-taxes-input"
+              name="stockTransactions"
+              id="stock-transactions-input"
               rows="3"
             ></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="overtime-input" class="form-label">Overtime</label>
-            <div class="input-group mb-3">
-              <span class="input-group-text">hrs</span>
-              <input
-                type="number"
-                id="overtime-input"
-                formControlName="overtime"
-                class="form-control"
-                placeholder="Enter Overtime"
-                required
-              />
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="bonuses-input" class="form-label">Bonuses</label>
-            <div class="input-group mb-3">
-              <span class="input-group-text">Ksh</span>
-              <input
-                type="number"
-                id="bonuses-input"
-                formControlName="bonuses"
-                class="form-control"
-                placeholder="Enter bonus"
-                required
-              />
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="employee-expenses-input" class="form-label"
-              >Employee Expense</label
-            >
-            <div class="input-group mb-3">
-              <span class="input-group-text">Ksh</span>
-              <input
-                type="number"
-                id="employee-expenses-input"
-                formControlName="employeeExpenses"
-                class="form-control"
-                placeholder="Enter Employee Expense"
-                required
-              />
-            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -311,7 +278,7 @@
               <i class="bi bi-x-lg align-baseline me-1"></i> Close
             </button>
             <button type="submit" class="btn btn-primary" id="add-btn">
-              Add Employment Cost
+              Add Equity
             </button>
           </div>
         </div>

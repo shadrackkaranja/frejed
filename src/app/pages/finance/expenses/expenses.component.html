@@ -1,1 +1,431 @@
-<p>expenses works!</p>
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs
+  title="Expenses Management"
+  [breadcrumbItems]="breadCrumbItems"
+></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div id="expensesList">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <div class="flex-grow-1">
+            <h5 class="card-title mb-0">
+              Expenses Record
+              <span class="badge bg-dark-subtle text-dark ms-1">2</span>
+            </h5>
+          </div>
+          <div class="flex-shrink-0">
+            <div class="d-flex flex-wrap align-items-start gap-2">
+              <button
+                class="btn btn-subtle-danger d-none"
+                id="remove-actions"
+                (click)="deleteRecordModal.show()"
+              >
+                <i class="ri-delete-bin-2-line"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary add-btn"
+                (click)="showModal.show()"
+              >
+                <i class="bi bi-plus-circle align-baseline me-1"></i> Add
+                Expense
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-centered align-middle table-nowrap mb-0">
+              <thead class="table-active">
+                <tr>
+                  <th
+                    class="sort cursor-pointer"
+                    (click)="onSort('expenseCategory')"
+                  >
+                    Expense Category
+                  </th>
+                  <th
+                    class="sort cursor-pointer"
+                    (click)="onSort('expenseDate')"
+                  >
+                    Expense Date
+                  </th>
+                  <th class="sort cursor-pointer" (click)="onSort('vendor')">
+                    Vendor/Supplier
+                  </th>
+                  <th
+                    class="sort cursor-pointer"
+                    (click)="onSort('budgetedAmounts')"
+                  >
+                    Budgeted Amounts
+                  </th>
+                  <th
+                    class="sort cursor-pointer"
+                    (click)="onSort('amountSpent')"
+                  >
+                    Amount Spent
+                  </th>
+                  <th
+                    class="sort cursor-pointer"
+                    (click)="onSort('paymentMethod')"
+                  >
+                    Payment Method
+                  </th>
+                  <th
+                    class="sort cursor-pointer"
+                    (click)="onSort('description')"
+                  >
+                    Description
+                  </th>
+                  <th
+                    class="sort cursor-pointer"
+                    (click)="onSort('documentation')"
+                  >
+                    Documentation
+                  </th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody class="list form-check-all">
+                @for ( data of expenses; track $index) {
+                <tr id="p_{{ data._id }}">
+                  <td class="expenseCategory">{{ data.expenseCategory }}</td>
+                  <td class="expenseDate">{{ data.expenseDate }}</td>
+                  <td class="vendor">{{ data.vendor }}</td>
+                  <td class="budgetedAmounts">
+                    ksh {{ data.budgetedAmount }}
+                  </td>
+                  <td class="amountSpent">ksh {{ data.amountSpent }}</td>
+                  <td class="paymentMethod">{{ data.paymentMethod }}</td>
+                  <td class="description">{{ data.description }}</td>
+                  <td class="documentation">{{ data.documentation }}</td>
+                  <td>
+                    <div dropdown class="dropdown">
+                      <button
+                        dropdownToggle
+                        class="btn btn-subtle-secondary btn-sm btn-icon"
+                      >
+                        <i class="bi bi-three-dots-vertical"></i>
+                      </button>
+
+                      <ul
+                        *bsDropdownMenu
+                        class="dropdown-menu dropdown-menu-end"
+                      >
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            routerLink="/"
+                            href="javascript:void(0);"
+                            ><i class="ph-eye align-middle me-1"></i> View</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="dropdown-item edit-item-btn"
+                            (click)="editList($index)"
+                            ><i class="ph-pencil align-middle me-1"></i> Edit</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="dropdown-item remove-item-btn"
+                            (click)="removeItem(data.id)"
+                            href="javascript:void(0);"
+                            ><i class="ph-trash align-middle me-1"></i>
+                            Remove</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                }
+              </tbody>
+              <div id="elmLoader">
+                <div
+                  class="spinner-border text-primary avatar-sm"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </table>
+          </div>
+          <!--end table-responsive-->
+
+          <div class="noresult" style="display: none">
+            <div class="text-center py-4">
+              <div class="avatar-md mx-auto mb-4">
+                <div
+                  class="avatar-title bg-light text-primary rounded-circle fs-4xl"
+                >
+                  <i class="bi bi-search"></i>
+                </div>
+              </div>
+              <h5 class="mt-2">Sorry! No Result Found</h5>
+              <p class="text-muted mb-0">
+                We've searched more than 150+ records We did not find any
+                records for you search.
+              </p>
+            </div>
+          </div>
+          <!-- end noresult -->
+
+          <div class="row mt-3 align-items-center" id="pagination-element">
+            <div class="col-sm">
+              <div class="text-muted text-center text-sm-start">
+                Showing
+                <span class="fw-semibold">{{ expenses?.length }}</span> of
+                <span class="fw-semibold">{{ allexpenses?.length }}</span>
+                Results
+              </div>
+            </div>
+
+            <div class="col-sm-auto mt-3 mt-sm-0">
+              <pagination
+                class="pagination-wrap hstack gap-2 justify-content-center"
+                [totalItems]="allexpenses?.length"
+                [itemsPerPage]="10"
+                (pageChanged)="pageChanged($event)"
+              ></pagination>
+            </div>
+          </div>
+          <!-- end pagination-element -->
+        </div>
+      </div>
+      <!--end card-->
+    </div>
+    <!--end col-->
+  </div>
+  <!--end row-->
+</div>
+
+<div class="modal fade" bsModal #showModal="bs-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header px-4 pt-4">
+        <h5 class="modal-title" id="exampleModalLabel">Add Expense</h5>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="showModal.hide()"
+        ></button>
+      </div>
+
+      <form
+        (ngSubmit)="saveExpenses()"
+        [formGroup]="expensesForm"
+        class="tablelist-form"
+        novalidate
+        autocomplete="off"
+      >
+        <div class="modal-body p-4">
+          <div
+            id="alert-error-msg"
+            class="d-none alert alert-danger py-2"
+          ></div>
+          <input type="hidden" id="id-field" />
+
+          <input type="hidden" id="order-field" />
+          <input type="hidden" id="rating-field" />
+          <input type="hidden" id="discount-field" />
+
+          <div class="mb-3">
+            <label for="expense-category-input" class="form-label"
+              >Expense Category</label
+            >
+            <div class="input-group mb-3">
+              <select
+                class="form-select mb-3"
+                aria-label="Default"
+                formControlName="expenseCategory"
+              >
+                <option selected>Select Category</option>
+                <option value="Administrative Expense">
+                  Administrative Expense
+                </option>
+                <option value="Operating Expense">Operating Expense</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="expense-date-input" class="form-label"
+              >Expense Date</label
+            >
+            <div class="input-group mb-3">
+              <input
+                type="date"
+                id="expense-date-input"
+                formControlName="expenseDate"
+                class="form-control"
+                placeholder="Enter Expense date"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="vendor-input" class="form-label">Vendor/Supplier</label>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                id="vendor-input"
+                formControlName="vendor"
+                class="form-control"
+                placeholder="Enter Vendor or Supplier"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="budgeted-amounts-input" class="form-label"
+              >Budgeted Amounts</label
+            >
+            <div class="input-group mb-3">
+              <span class="input-group-text">ksh</span>
+              <input
+                type="number"
+                id="budgeted-amounts-input"
+                formControlName="budgetedAmounts"
+                class="form-control"
+                placeholder="Enter Budgeted Amount"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="amount-spent-input" class="form-label"
+              >Amount Spent</label
+            >
+            <div class="input-group mb-3">
+              <span class="input-group-text">ksh</span>
+              <input
+                type="number"
+                id="amount-spent-input"
+                formControlName="amountSpent"
+                class="form-control"
+                placeholder="Enter amount spent"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="payment-method-input" class="form-label"
+              >Payment Method</label
+            >
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                id="payment-method-input"
+                formControlName="paymentMethod"
+                class="form-control"
+                placeholder="Enter payment method"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description-input" class="form-label"
+              >Description</label
+            >
+            <div class="input-group mb-3">
+              <textarea
+                class="form-control"
+                name="description"
+                id="description-input"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="documentation-input" class="form-label"
+              >Documentation</label
+            >
+            <textarea
+              class="form-control"
+              name="documentation"
+              id="documentation-input"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="hstack gap-2 justify-content-end">
+            <button
+              type="button"
+              class="btn btn-ghost-danger"
+              (click)="showModal.hide()"
+            >
+              <i class="bi bi-x-lg align-baseline me-1"></i> Close
+            </button>
+            <button type="submit" class="btn btn-primary" id="add-btn">
+              Add Equity
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+
+<!-- deleteRecordModal -->
+<div
+  id="deleteRecordModal"
+  class="modal fade zoomIn"
+  bsModal
+  #deleteRecordModal="bs-modal"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          id="deleteRecord-close"
+          (click)="deleteRecordModal.hide()"
+        ></button>
+      </div>
+      <div class="modal-body p-md-5">
+        <div class="text-center">
+          <div class="text-danger">
+            <i class="bi bi-trash display-4"></i>
+          </div>
+          <div class="mt-4">
+            <h3 class="mb-2">Are you sure ?</h3>
+            <p class="text-muted fs-lg mx-3 mb-0">
+              Are you sure you want to remove this record ?
+            </p>
+          </div>
+        </div>
+        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+          <button
+            type="button"
+            class="btn w-sm btn-light btn-hover"
+            (click)="deleteRecordModal.hide()"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn w-sm btn-danger btn-hover"
+            id="delete-record"
+            (click)="deleteData(deleteId)"
+          >
+            Yes, Delete It!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
