@@ -26,4 +26,8 @@ export const GlobalComponent = {
     // cash equivalent Api
 
     cashEquivalent: 'apps/cashequivalent',
+
+    // employment cost Api
+
+    employmentCost: 'apps/employmentcost',
 }

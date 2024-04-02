@@ -42,6 +42,8 @@ import { ChatEffects } from './store/chat/chat.effects';
 import { ProductEffects } from './store/Product/product.effect';
 import { AssetEffects } from './store/Asset/asset.effect';
 import { CashEquivalentEffects } from './store/Cash-equivalent/cash-equivalent.effect';
+import { EmploymentCostEffects } from './store/employment-cost/employment-cost.effect';
+import { EquityEffects } from './store/Equity/equity.effect';
 import { InvoiceEffects } from './store/Invoices/invoices.effects';
 import { AuthenticationEffects } from './store/Authentication/authentication.effects';
 import { initFirebaseBackend } from './authUtils';
@@ -96,6 +98,8 @@ if (environment.defaultauth === 'firebase') {
       ProductEffects,
       AssetEffects,
       CashEquivalentEffects,
+      EmploymentCostEffects,
+      EquityEffects,
       InvoiceEffects,
       AuthenticationEffects,
       SellerEffects,
