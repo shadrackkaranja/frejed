@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-import { ChannelsData, TableData, agencies, agentlistdata, attachementsData, bookmarkData, browserData, callsData, chatContactData, chatData, cources, courseGrid, courseList, customerList, dealData, earningcard, earningdata, estateList, feedback, instructor, invoice, invoicesList, leadData, listingGrid, listinglist, listinglistcard, messages, orderList, orders, productList, products, assetList, cashEquivalentList, employmentCostList, equityList, expensesList, property, recentcourse, rentproperty, saleproperty, sales, sellerList, sellerOverview, subscription, supporttickets, taskData, ticketList, topPageData } from '../data';
+import { ChannelsData, TableData, agencies, agentlistdata, attachementsData, bookmarkData, browserData, callsData, chatContactData, chatData, cources, courseGrid, courseList, customerList, dealData, earningcard, earningdata, estateList, feedback, instructor, invoice, invoicesList, leadData, listingGrid, listinglist, listinglistcard, messages, orderList, orders, productList, products, assetList, cashEquivalentList, employmentCostList, equityList, expensesList, payablesList, projectsList, property, recentcourse, rentproperty, saleproperty, sales, sellerList, sellerOverview, subscription, supporttickets, taskData, ticketList, topPageData } from '../data';
 import { category, instructorGrid, instructorList } from '../data/learning';
 
 
@@ -773,6 +773,82 @@ export class fakebackendInterceptor implements HttpInterceptor {
             if (request.url.endsWith('/app/expensesList') && request.method === 'DELETE') {
                 const updatedUser = request.body;
                 if (expensesList) {
+                    return of(new HttpResponse({ status: 200, body: updatedUser })); // respond 200 OK
+                } else {
+                    return throwError({ status: 401, error: { message: 'Unauthorised' } });
+                }
+            }
+
+             // get payables list
+             if (request.url.endsWith('/app/payablesList') && request.method === 'GET') {
+                if (payablesList) {
+                    return of(new HttpResponse({ status: 200, body: payablesList }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+            // Add payables list
+            if (request.url.endsWith('/app/payablesList') && request.method === 'POST') {
+                const newUser = request.body;
+                if (payablesList) {
+                    return of(new HttpResponse({ status: 200, body: newUser }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+
+            // Update payables list
+            if (request.url.endsWith('/app/payablesList') && request.method === 'PUT') {
+                const updatedUser = request.body;
+                if (payablesList) {
+                    return of(new HttpResponse({ status: 200, body: updatedUser }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+
+            // DELETE payables list
+            if (request.url.endsWith('/app/payablesList') && request.method === 'DELETE') {
+                const updatedUser = request.body;
+                if (payablesList) {
+                    return of(new HttpResponse({ status: 200, body: updatedUser })); // respond 200 OK
+                } else {
+                    return throwError({ status: 401, error: { message: 'Unauthorised' } });
+                }
+            }
+
+             // get projects list
+             if (request.url.endsWith('/app/projectsList') && request.method === 'GET') {
+                if (projectsList) {
+                    return of(new HttpResponse({ status: 200, body: projectsList }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+            // Add projects list
+            if (request.url.endsWith('/app/projectsList') && request.method === 'POST') {
+                const newUser = request.body;
+                if (projectsList) {
+                    return of(new HttpResponse({ status: 200, body: newUser }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+
+            // Update projects list
+            if (request.url.endsWith('/app/projectsList') && request.method === 'PUT') {
+                const updatedUser = request.body;
+                if (projectsList) {
+                    return of(new HttpResponse({ status: 200, body: updatedUser }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+
+            // DELETE projects list
+            if (request.url.endsWith('/app/projectsList') && request.method === 'DELETE') {
+                const updatedUser = request.body;
+                if (projectsList) {
                     return of(new HttpResponse({ status: 200, body: updatedUser })); // respond 200 OK
                 } else {
                     return throwError({ status: 401, error: { message: 'Unauthorised' } });

@@ -14,6 +14,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { RecievablesComponent } from './recievables/recievables.component';
 import { RevenueComponent } from './revenue/revenue.component';
 import { TaxationComponent } from './taxation/taxation.component';
+import { IndexComponent } from '../dashboards/index/index.component';
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: "management-accounts",
-    component: ManagementAccountsComponent
+    component: IndexComponent
   },
   {
     path: "payables",

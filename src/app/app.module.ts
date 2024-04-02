@@ -46,6 +46,7 @@ import { EmploymentCostEffects } from './store/employment-cost/employment-cost.e
 import { EquityEffects } from './store/Equity/equity.effect';
 import { ExpensesEffects } from './store/Expenses/expenses.effect';
 import { InvoiceEffects } from './store/Invoices/invoices.effects';
+import { PayablesEffects } from './store/Payables/payables.effect';
 import { AuthenticationEffects } from './store/Authentication/authentication.effects';
 import { initFirebaseBackend } from './authUtils';
 import { SellerEffects } from './store/Seller/seller.effects';
@@ -54,6 +55,7 @@ import { InstructorEffects } from './store/Learning-instructor/instructor.effect
 import { CustomerEffects } from './store/Customer/customer.effects';
 import { studentsEffects } from './store/students/student.effcts';
 import { CourcesEffects } from './store/Learning-cources/cources.effect';
+import { ProjectsEffects } from './store/Projects/projects.effect';
 
 
 export function createTranslateLoader(http: HttpClient): any {
@@ -102,6 +104,8 @@ if (environment.defaultauth === 'firebase') {
       EmploymentCostEffects,
       EquityEffects,
       ExpensesEffects,
+      PayablesEffects,
+      ProjectsEffects,
       InvoiceEffects,
       AuthenticationEffects,
       SellerEffects,
