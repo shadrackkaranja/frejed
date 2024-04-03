@@ -52,7 +52,7 @@
                         <div class="d-flex flex-wrap align-items-center gap-2">
                             <button class="btn btn-subtle-danger d-none" id="remove-actions" (click)="deleteRecordModal.show()"><i class="ri-delete-bin-2-line"></i></button>
                             
-                            <button type="button" class="btn btn-primary add-btn ms-auto" (click)="showModal.show()"><i class="bi bi-plus-circle align-baseline me-1"></i> Add Recievables</button>
+                            <button type="button" class="btn btn-primary add-btn ms-auto" (click)="showModal.show()"><i class="bi bi-plus-circle align-baseline me-1"></i> Add Recievable</button>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Add Recievables</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Recievable</h5>
                 <button type="button" class="btn-close" id="close-ordermodal" (click)="showModal.hide()"></button>
             </div>
             <form (ngSubmit)="saveRecievables()" [formGroup]="orderForm" class="tablelist-form" novalidate autocomplete="off">
@@ -153,95 +153,31 @@
                     <div id="alert-error-msg" class="d-none alert alert-danger py-2"></div>
                     <input type="hidden" id="id-field">
                     <div class="mb-3">
-                        <label for="customername-field" class="form-label">Customer Name</label>
-                        <input type="text" formControlName="customer" id="customername-field" class="form-control" placeholder="Enter name" required>
+                        <label for="clientName-field" class="form-label">Client Name</label>
+                        <input type="text" formControlName="clientName" id="clientName-field" class="form-control" placeholder="Enter client name" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="productname-field" class="form-label">Product</label>
-                        <select class="form-control" name="productname-field" formControlName="product" id="productname-field" required>
-                            <option value="">Product</option>
-                            <option value="Cotton collar tshirts for men">Cotton collar t-shirts for men</option>
-                            <option value="Like style travel black handbag">Like style travel black handbag</option>
-                            <option value="Fossil gen 5E smart watch">Fossil gen 5E smart watch</option>
-                            <option value="Super bass blutooth wireless headphone">Super bass bluetooth wireless
-                                headphone</option>
-                            <option value="Willage volleyball ball size 4">Willage volleyball ball size 4</option>
-                            <option value="Branded T-Shirts">Branded T-Shirts</option>
-                            <option value="Flip-Flops and house slippers">Flip-Flops and house slippers</option>
-                            <option value="Jeans blue men boxer">Jeans blue men boxer</option>
-                            <option value="MAG back to the future shoes">MAG back to the future shoes</option>
-                            <option value="Super bass bluetooth wireless headphone">Super bass bluetooth wireless
-                                headphone</option>
-                        </select>
+                        <label for="invoiveNumber-field" class="form-label">Client Name</label>
+                        <input type="text" formControlName="invoiveNumber" id="invoiveNumber-field" class="form-control" placeholder="Enter Invoice Number" required>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label for="date-field" class="form-label">Recievables Date</label>
-                                <input type="date" id="date-field" class="form-control" mwlFlatpickr [altInput]="true" [convertModelValue]="true" formControlName="order_date" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="shopName-input" class="form-label">Shop</label>
-                                <input type="text" id="shopName-input" class="form-control" formControlName="shopname" placeholder="Enter shop name" required>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <label class="form-label mb-3">Shop logo</label>
-                            <div class="text-center mb-3">
-                                <div class="position-relative d-inline-block">
-                                    <div class="position-absolute top-100 start-100 translate-middle">
-                                        <label for="companyLogo-image-input" class="mb-0" placement="right" tooltip="Select company logo">
-                                            <span class="avatar-xs d-inline-block">
-                                                <span class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                                    <i class="ri-image-fill"></i>
-                                                </span>
-                                            </span>
-                                        </label>
-                                        <input class="form-control d-none" id="companyLogo-image-input" type="file" accept="image/png, image/gif, image/jpeg" (change)="fileChange($event)">
-                                    </div>
-                                    <div class="avatar-lg">
-                                        <div class="avatar-title bg-light rounded-3">
-                                            <img src="assets/images/users/multi-user.jpg" alt="" id="companyLogo-img" class="avatar-md h-auto rounded-3 object-fit-cover">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="mb-3">
+                        <label for="date-field" class="form-label">Invoice Date</label>
+                        <input type="date" id="date-field" class="form-control" mwlFlatpickr [altInput]="true" [convertModelValue]="true" formControlName="invoiceDate" required>
                     </div>
 
-                    <div class="row gy-4 mb-3">
-                        <div class="col-md-6">
-                            <div>
-                                <label for="amount-field" class="form-label">Amount</label>
-                                <input type="text" id="amount-field" class="form-control" formControlName="price" placeholder="Total amount" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div>
-                                <label for="payment-field" class="form-label">Payment Method</label>
-                                <select class="form-control" data-trigger name="payment-method" formControlName="pay_method" required id="payment-field">
-                                    <option value="">Payment Method</option>
-                                    <option value="Mastercard">Mastercard</option>
-                                    <option value="Visa">Visa</option>
-                                    <option value="COD">COD</option>
-                                    <option value="Paypal">Paypal</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="mb-3">
+                        <label for="amountDue-field" class="form-label">Amount Due</label>
+                        <input type="text" id="amountDue-field" class="form-control" formControlName="amountDue" placeholder="Total amount due" required>
                     </div>
 
                     <div>
-                        <label for="delivered-status" class="form-label">Delivery Status</label>
-                        <select class="form-control" data-trigger name="delivered-status" formControlName="paymentStatus" required id="delivered-status">
-                            <option value="">Delivery Status</option>
-                            <option value="New">New</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Out of Paid">Out of Paid</option>
-                            <option value="Shipping">Shipping</option>
+                        <label for="paymentStatus" class="form-label">Payment Status</label>
+                        <select class="form-control" data-trigger name="paymentStatus" formControlName="paymentStatus" required id="paymentStatus">
+                            <option value="">Payment Status</option>
                             <option value="Paid">Paid</option>
+                            <option value="Pending">Pending</option>
                         </select>
                     </div>
                     <input type="hidden" id="delivery-status-field">
