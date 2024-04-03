@@ -26,3 +26,12 @@ export interface productsModel {
     cart?: any,
     price?: any
 }
+
+export interface recievablesModel {
+    id?: any,
+    clientName?: any,
+    invoiveNumber?: any,
+    invoiceDate?: any,
+    amountDue?: any,
+    paymentStatus?: any
+}

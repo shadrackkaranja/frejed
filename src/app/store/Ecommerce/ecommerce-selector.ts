@@ -19,6 +19,11 @@ export const selectproductData = createSelector(
     (state: ECoState) => state.productdata
 );
 
+export const selectrecievablesData = createSelector(
+    selectDataState,
+    (state: ECoState) => state.recievablesdata
+);
+
 export const selectDataLoading = createSelector(
     selectDataState,
     (state: ECoState) => state.loading

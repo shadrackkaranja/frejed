@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-import { ChannelsData, TableData, agencies, agentlistdata, attachementsData, bookmarkData, browserData, callsData, chatContactData, chatData, cources, courseGrid, courseList, customerList, dealData, earningcard, earningdata, estateList, feedback, instructor, invoice, invoicesList, leadData, listingGrid, listinglist, listinglistcard, messages, orderList, orders, productList, products, assetList, cashEquivalentList, employmentCostList, equityList, expensesList, payablesList, projectsList, property, recentcourse, rentproperty, saleproperty, sales, sellerList, sellerOverview, subscription, supporttickets, taskData, ticketList, topPageData } from '../data';
+import { ChannelsData, TableData, agencies, agentlistdata, attachementsData, bookmarkData, browserData, callsData, chatContactData, chatData, cources, courseGrid, courseList, customerList, dealData, earningcard, earningdata, estateList, feedback, instructor, invoice, invoicesList, leadData, listingGrid, listinglist, listinglistcard, messages, orderList, orders, productList, products, assetList, cashEquivalentList, employmentCostList, equityList, expensesList, payablesList, projectsList, recievablesList, property, recentcourse, rentproperty, saleproperty, sales, sellerList, sellerOverview, subscription, supporttickets, taskData, ticketList, topPageData } from '../data';
 import { category, instructorGrid, instructorList } from '../data/learning';
 
 
@@ -849,6 +849,44 @@ export class fakebackendInterceptor implements HttpInterceptor {
             if (request.url.endsWith('/app/projectsList') && request.method === 'DELETE') {
                 const updatedUser = request.body;
                 if (projectsList) {
+                    return of(new HttpResponse({ status: 200, body: updatedUser })); // respond 200 OK
+                } else {
+                    return throwError({ status: 401, error: { message: 'Unauthorised' } });
+                }
+            }
+
+            // get recievablesList
+            if (request.url.endsWith('/app/recievablesList') && request.method === 'GET') {
+                if (recievablesList) {
+                    return of(new HttpResponse({ status: 200, body: recievablesList }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+            // Add recievablesList list
+            if (request.url.endsWith('/app/recievablesList') && request.method === 'POST') {
+                const newUser = request.body;
+                if (recievablesList) {
+                    return of(new HttpResponse({ status: 200, body: newUser }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+
+            // Update recievablesList list
+            if (request.url.endsWith('/app/recievablesList') && request.method === 'PUT') {
+                const updatedUser = request.body;
+                if (recievablesList) {
+                    return of(new HttpResponse({ status: 200, body: updatedUser }));
+                } else {
+                    return throwError({ status: 401, error: { message: 'No Data Found' } });
+                }
+            }
+
+            // DELETE recievablesList list
+            if (request.url.endsWith('/app/recievablesList') && request.method === 'DELETE') {
+                const updatedUser = request.body;
+                if (recievablesList) {
                     return of(new HttpResponse({ status: 200, body: updatedUser })); // respond 200 OK
                 } else {
                     return throwError({ status: 401, error: { message: 'Unauthorised' } });

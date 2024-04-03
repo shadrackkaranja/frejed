@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { CrudService } from "src/app/core/services/crud.service";
-import { fetchorderData, fetchorderFailure, fetchorderSuccess, fetchproductsData, fetchproductsFailure, fetchproductsSuccess, fetchsalesData, fetchsalesFailure, fetchsalesSuccess } from "./ecommerce.actions";
+import { fetchorderData, fetchorderFailure, fetchorderSuccess, fetchproductsData, fetchproductsFailure, fetchproductsSuccess, fetchsalesData, fetchsalesFailure, fetchsalesSuccess, fetchrecievablesData, fetchrecievablesFailure, fetchrecievablesSuccess } from "./ecommerce.actions";
 
 @Injectable()
 
@@ -48,6 +48,21 @@ export class ECoEffects {
 
                     catchError((error) =>
                         of(fetchproductsFailure({ error }))
+                    )
+
+                )
+            )
+        )
+    );
+    fetchrecievablesData$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(fetchrecievablesData),
+            mergeMap(() =>
+                this.CrudService.fetchData('/app/recievables').pipe(
+                    map((recievablesdata) => fetchrecievablesSuccess({ recievablesdata })),
+
+                    catchError((error) =>
+                        of(fetchrecievablesFailure({ error }))
                     )
 
                 )

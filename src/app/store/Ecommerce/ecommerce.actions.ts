@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ordersModel, productsModel, salesModel } from './ecommerce.model';
+import { ordersModel, productsModel, recievablesModel, salesModel } from './ecommerce.model';
 
 // fetch sales data
 export const fetchsalesData = createAction('[Data] Fetch sales Table Data');
@@ -10,6 +10,11 @@ export const fetchsalesFailure = createAction('[Data] Fetch sales Data Failure',
 export const fetchorderData = createAction('[Data] Fetch order Table Data');
 export const fetchorderSuccess = createAction('[Data] Fetch order Data Success', props<{ orderdata: ordersModel[] }>());
 export const fetchorderFailure = createAction('[Data] Fetch order Data Failure', props<{ error: string }>());
+
+// fetch recievables data
+export const fetchrecievablesData = createAction('[Data] Fetch recievables Table Data');
+export const fetchrecievablesSuccess = createAction('[Data] Fetch recievables Data Success', props<{ recievablesdata: recievablesModel[] }>());
+export const fetchrecievablesFailure = createAction('[Data] Fetch order Data Failure', props<{ error: string }>());
 
 // fetch order data
 export const fetchproductsData = createAction('[Data] Fetch products Table Data');

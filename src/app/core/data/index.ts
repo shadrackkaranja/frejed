@@ -16,6 +16,7 @@ import { equityList } from "./equity";
 import { expensesList } from "./expenses";
 import { payablesList } from "./payables";
 import { projectsList } from "./projects";
+import { recievablesList } from "./recievables";
 import { customerList } from "./customer";
 import { invoicesList, invoice } from "./invoice";
 import { sellerOverview } from "./seller";
@@ -29,7 +30,7 @@ import { cources } from "./students"
 export {
     browserData, topPageData, TableData, leadData, dealData, taskData, sales, orders, products, instructor, recentcourse, property, feedback,
     saleproperty, rentproperty, listingGrid, listinglist, agentlistdata, agencies, supporttickets, assignesTickets, ticketList,
-    messages, chatContactData, chatData, ChannelsData,attachementsData,callsData, bookmarkData, productList, assetList, cashEquivalentList, employmentCostList, equityList, expensesList, payablesList, projectsList, customerList, invoicesList, invoice, sellerOverview, orderList, estateList, listinglistcard,
+    messages, chatContactData, chatData, ChannelsData,attachementsData,callsData, bookmarkData, productList, assetList, cashEquivalentList, employmentCostList, equityList, expensesList, payablesList, projectsList, recievablesList, customerList, invoicesList, invoice, sellerOverview, orderList, estateList, listinglistcard,
     earningdata, earningcard, instructorList,
     courseList, sellerList, cources,
     subscription, courseGrid
