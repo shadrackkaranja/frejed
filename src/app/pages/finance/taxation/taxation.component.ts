@@ -13,7 +13,8 @@ import { addtaxationList, deletetaxationList, fetchtaxationList, updatetaxationL
 @Component({
   selector: 'app-taxation',
   templateUrl: './taxation.component.html',
-  styleUrl: './taxation.component.scss'
+  styleUrl: './taxation.component.scss',
+  providers: [DecimalPipe]
 })
 export class TaxationComponent {
 
@@ -67,10 +68,14 @@ export class TaxationComponent {
      */
     this.taxationForm = this.formBuilder.group({
       id: [''],
-      projectName: ['', [Validators.required]],
-      projectBudget: ['', [Validators.required]],
-      actualCost: ['', [Validators.required]],
-      projectTimeline: ['', [Validators.required]]
+      tax_type: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      narrative: ['', [Validators.required]],
+      tax_rate: ['', [Validators.required]],
+      taxable_income: ['', [Validators.required]],
+      tax_deductions: ['', [Validators.required]],
+      tax_payments: ['', [Validators.required]]
+      
     });
   }
 

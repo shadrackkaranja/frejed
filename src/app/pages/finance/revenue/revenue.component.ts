@@ -68,10 +68,11 @@ export class RevenueComponent {
      */
     this.revenueForm = this.formBuilder.group({
       id: [''],
-      projectName: ['', [Validators.required]],
-      projectBudget: ['', [Validators.required]],
-      actualCost: ['', [Validators.required]],
-      projectTimeline: ['', [Validators.required]]
+      revenue_source: ['', [Validators.required]],
+      transaction_date: ['', [Validators.required]],
+      amount: ['', [Validators.required]],
+      client_name: ['', [Validators.required]],
+      revenue_recognition_method: ['', [Validators.required]]
     });
   }
 
