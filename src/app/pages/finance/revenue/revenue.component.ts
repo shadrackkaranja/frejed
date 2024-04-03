@@ -122,7 +122,7 @@ export class RevenueComponent {
   editList(id: any) {
     this.showModal?.show()
     var modaltitle = document.querySelector('.modal-title') as HTMLAreaElement
-    modaltitle.innerHTML = 'Edit Project'
+    modaltitle.innerHTML = 'Edit Revenue'
     var modalbtn = document.getElementById('add-btn') as HTMLAreaElement
     modalbtn.innerHTML = 'Update'
 

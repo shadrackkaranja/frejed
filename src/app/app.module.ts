@@ -58,6 +58,7 @@ import { CourcesEffects } from './store/Learning-cources/cources.effect';
 import { ProjectsEffects } from './store/Projects/projects.effect';
 import { RecievablessEffects } from './store/Recievables/recievables.effect';
 import { RevenueEffects } from './store/Revenue/revenue.effect';
+import { TaxationEffects } from './store/Taxation/taxation.effect';
 
 
 export function createTranslateLoader(http: HttpClient): any {
@@ -110,6 +111,7 @@ if (environment.defaultauth === 'firebase') {
       ProjectsEffects,
       RecievablessEffects,
       RevenueEffects,
+      TaxationEffects,
       InvoiceEffects,
       AuthenticationEffects,
       SellerEffects,

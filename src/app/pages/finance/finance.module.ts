@@ -59,6 +59,7 @@ import { PayablesComponent } from './payables/payables.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { RecievablesComponent } from './recievables/recievables.component';
 import { RevenueComponent } from './revenue/revenue.component';
+import { TaxationComponent } from './taxation/taxation.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -78,7 +79,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     PayablesComponent,
     ProjectsComponent,
     RecievablesComponent,
-    RevenueComponent
+    RevenueComponent,
+    TaxationComponent
   ],
   imports: [
     CommonModule,
