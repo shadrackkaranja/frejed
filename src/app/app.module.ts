@@ -57,6 +57,7 @@ import { studentsEffects } from './store/students/student.effcts';
 import { CourcesEffects } from './store/Learning-cources/cources.effect';
 import { ProjectsEffects } from './store/Projects/projects.effect';
 import { RecievablessEffects } from './store/Recievables/recievables.effect';
+import { RevenueEffects } from './store/Revenue/revenue.effect';
 
 
 export function createTranslateLoader(http: HttpClient): any {
@@ -108,6 +109,7 @@ if (environment.defaultauth === 'firebase') {
       PayablesEffects,
       ProjectsEffects,
       RecievablessEffects,
+      RevenueEffects,
       InvoiceEffects,
       AuthenticationEffects,
       SellerEffects,

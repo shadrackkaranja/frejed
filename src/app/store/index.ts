@@ -17,6 +17,7 @@ import { EquityReducer, EquityState } from "./Equity/equity.reducer";
 import { ExpensesReducer, ExpensesState } from "./Expenses/expenses.reducer";
 import { PayablesReducer, PayablesState } from "./Payables/payables.reducer";
 import { ProjectsReducer, ProjectsState } from "./Projects/projects.reducer";
+import { RevenueReducer, RevenueState } from "./Revenue/revenue.reducer";
 import { RecievablesReducer, RecievablesState } from "./Recievables/recievables.reducer";
 import { InvoiceReducer, InvoiceState } from "./Invoices/invoices.reducer";
 import { AuthenticationState, authenticationReducer } from "./Authentication/authentication.reducer";
@@ -41,6 +42,7 @@ export interface RootReducerState {
     payables: PayablesState;
     projects: ProjectsState;
     Recievableslist: RecievablesState;
+    revenue: RevenueState;
     Ecommercelist: ECoState;
     Learninglist: LearningState;
     Realist: RealState;
@@ -72,6 +74,7 @@ export const rootReducer: ActionReducerMap<RootReducerState> = {
     payables: PayablesReducer,
     projects: ProjectsReducer,
     Recievableslist: RecievablesReducer,
+    revenue: RevenueReducer,
     auth: authenticationReducer,
     Ecommercelist: ECoReducer,
     Learninglist: LearningReducer,
